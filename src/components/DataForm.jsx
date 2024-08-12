@@ -14,8 +14,9 @@ const DataForm = () => {
   const formRef = useRef(null);
 
   useEffect(() => {
-    if (formRef.current) {
-      VanillaTilt.init(formRef.current, {
+    const currentFormRef = formRef.current;
+    if (currentFormRef) {
+      VanillaTilt.init(currentFormRef, {
         max: 25,
         speed: 400,
         glare: true,
@@ -24,8 +25,8 @@ const DataForm = () => {
     }
 
     return () => {
-      if (formRef.current) {
-        formRef.current.vanillaTilt.destroy();
+      if (currentFormRef) {
+        currentFormRef.vanillaTilt.destroy();
       }
     };
   }, []);
@@ -159,7 +160,7 @@ const DataForm = () => {
             disabled={!isButtonActive}
             className={`w-full p-2 rounded text-white ${
               isButtonActive
-                ? "bg-pink-600 hover:bg-pink-800"
+                ? "bg-pink-600 hover:bg-pink-500"
                 : "bg-gray-500 cursor-not-allowed"
             }`}
           >
