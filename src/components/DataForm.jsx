@@ -17,26 +17,28 @@ const DataForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     setFormData({
       ...formData,
       [name]: value,
     });
 
+    // Validate email when the email field is changed
     if (name === "email") {
       if (!validateEmail(value)) {
         setEmailError("Invalid email format");
-        setIsButtonActive(false);
       } else {
         setEmailError("");
       }
     }
+    // Activate the button only if the phone number is 10 digits and the email is valid
+    const isPhoneValid =
+      formData.phone.length === 10 || (name === "phone" && value.length === 10);
+    const isEmailValid =
+      validateEmail(formData.email) ||
+      (name === "email" && validateEmail(value));
 
-    // Activate button only if phone number is 10 digits and email is valid
-    if (
-      name === "phone" &&
-      value.length === 10 &&
-      validateEmail(formData.email)
-    ) {
+    if (isPhoneValid && isEmailValid) {
       setIsButtonActive(true);
     } else {
       setIsButtonActive(false);
