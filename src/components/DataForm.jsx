@@ -49,7 +49,7 @@ const DataForm = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://backend-joinnow.onrender.com/", {
+      const response = await fetch("https://backend-joinnow.onrender.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
