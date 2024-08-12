@@ -80,7 +80,7 @@ const Navbar = () => {
 
         <Link
           to="/join"
-          className="md:inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="md:inline-block bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded"
         >
           Join Now
         </Link>

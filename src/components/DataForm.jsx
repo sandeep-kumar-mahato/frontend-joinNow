@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import VanillaTilt from "vanilla-tilt";
 
 const DataForm = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,25 @@ const DataForm = () => {
 
   const [isButtonActive, setIsButtonActive] = useState(false);
   const [emailError, setEmailError] = useState("");
+
+  const formRef = useRef(null);
+
+  useEffect(() => {
+    if (formRef.current) {
+      VanillaTilt.init(formRef.current, {
+        max: 25,
+        speed: 400,
+        glare: true,
+        "max-glare": 0.5,
+      });
+    }
+
+    return () => {
+      if (formRef.current) {
+        formRef.current.vanillaTilt.destroy();
+      }
+    };
+  }, []);
 
   const validateEmail = (email) => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -23,7 +43,6 @@ const DataForm = () => {
       [name]: value,
     });
 
-    // Validate email when the email field is changed
     if (name === "email") {
       if (!validateEmail(value)) {
         setEmailError("Invalid email format");
@@ -31,7 +50,7 @@ const DataForm = () => {
         setEmailError("");
       }
     }
-    // Activate the button only if the phone number is 10 digits and the email is valid
+
     const isPhoneValid =
       formData.phone.length === 10 || (name === "phone" && value.length === 10);
     const isEmailValid =
@@ -49,13 +68,16 @@ const DataForm = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://backend-joinnow.onrender.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        "https://backend-joinnow.onrender.com/submit",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (response.ok) {
         alert("Data submitted successfully");
@@ -70,16 +92,19 @@ const DataForm = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 sm:p-6 md:p-8 bg-gradient-to-r from-blue-100 to-teal-100 rounded-lg shadow-md py-10 sm:py-16 md:py-20 mt-16">
-      <div className="w-full sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/4 m-auto pb-10 sm:pb-16 md:pb-20">
-        <h1 className="text-xl sm:text-2xl text-center font-bold text-gray-800 mb-4 sm:mb-6">
+    <div className="container mx-auto p-4 sm:p-6 md:p-8 bg-gradient-to-r from-purple-900 via-pink-800 to-purple-900 shadow-lg py-10 sm:py-16 md:py-20 mt-16">
+      <div
+        ref={formRef}
+        className="w-full sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/2 m-auto p-10 sm:pb-16 md:pb-20 border-4 border-pink-600 rounded-lg shadow-xl"
+      >
+        <h1 className="text-xl sm:text-2xl text-center font-bold text-white mb-4 sm:mb-6">
           Submit Your Data
         </h1>
         <form onSubmit={handleSubmit}>
           <div className="relative z-0 w-full mb-4 sm:mb-5 group">
             <label
               htmlFor="name"
-              className="block text-base sm:text-lg font-medium text-gray-700"
+              className="block text-base sm:text-lg font-medium text-pink-200"
             >
               Name:
             </label>
@@ -90,14 +115,14 @@ const DataForm = () => {
               value={formData.name}
               onChange={handleChange}
               required
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              className="mt-1 p-2 block w-full border border-pink-400 bg-purple-800 rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500 text-white"
             />
           </div>
 
           <div className="mb-4 sm:mb-5">
             <label
               htmlFor="email"
-              className="block text-base sm:text-lg font-medium text-gray-700"
+              className="block text-base sm:text-lg font-medium text-pink-200"
             >
               Email:
             </label>
@@ -108,7 +133,7 @@ const DataForm = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              className="mt-1 p-2 block w-full border border-pink-400 bg-purple-800 rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500 text-white"
             />
             {emailError && (
               <p className="text-red-500 text-sm mt-1">{emailError}</p>
@@ -116,7 +141,7 @@ const DataForm = () => {
           </div>
 
           <div className="mb-4 sm:mb-5">
-            <label className="block text-base sm:text-lg font-medium text-gray-700">
+            <label className="block text-base sm:text-lg font-medium text-pink-200">
               Phone:
             </label>
             <input
@@ -124,7 +149,7 @@ const DataForm = () => {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full p-2 border rounded"
+              className="w-full p-2 border border-pink-400 bg-purple-800 rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500 text-white"
               required
             />
           </div>
@@ -134,8 +159,8 @@ const DataForm = () => {
             disabled={!isButtonActive}
             className={`w-full p-2 rounded text-white ${
               isButtonActive
-                ? "bg-blue-500 hover:bg-blue-700"
-                : "bg-gray-300 cursor-not-allowed"
+                ? "bg-pink-600 hover:bg-pink-800"
+                : "bg-gray-500 cursor-not-allowed"
             }`}
           >
             Join Now

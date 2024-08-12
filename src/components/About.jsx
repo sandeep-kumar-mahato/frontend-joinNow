@@ -1,15 +1,18 @@
 const About = () => {
   return (
-    <div className="relative bg-gray-100 overflow-hidden mt-16">
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-teal-400 to-blue-500 opacity-50"></div>
+    <div
+      className="relative overflow-hidden mt-16"
+      style={{ backgroundColor: "#3b0066" }}
+    >
+      <div className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-400 to-purple-500 opacity-50"></div>
       <div className="relative container mx-auto px-6 py-12">
-        <h1 className="text-4xl font-extrabold text-gray-900 mb-6">About Us</h1>
+        <h1 className="text-4xl font-extrabold text-white mb-6">About Us</h1>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+          <h2 className="text-2xl font-semibold text-white mb-4">
             Our Mission
           </h2>
-          <p className="text-gray-700 leading-relaxed">
+          <p className="text-white leading-relaxed">
             At [Your Company Name], our mission is to deliver exceptional
             services that exceed our clients&apos; expectations. We believe in
             innovation, integrity, and excellence, and strive to achieve these
@@ -18,10 +21,8 @@ const About = () => {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            Our Team
-          </h2>
-          <p className="text-gray-700 leading-relaxed">
+          <h2 className="text-2xl font-semibold text-white mb-4">Our Team</h2>
+          <p className="text-white leading-relaxed">
             Our team consists of highly skilled professionals who are experts in
             their respective fields. We work collaboratively to ensure that we
             deliver the best results for our clients. Our diverse backgrounds
@@ -31,10 +32,8 @@ const About = () => {
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            Our Values
-          </h2>
-          <ul className="list-disc list-inside text-gray-700">
+          <h2 className="text-2xl font-semibold text-white mb-4">Our Values</h2>
+          <ul className="list-disc list-inside text-white">
             <li className="mb-2">
               Integrity: We uphold the highest standards of honesty and
               transparency.
