@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import VanillaTilt from "vanilla-tilt";
+import bgImage from "../assets/bg.jpg"; // Ensure the path is correct
 
 const DataForm = () => {
   const [formData, setFormData] = useState({
@@ -93,10 +94,23 @@ const DataForm = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 sm:p-6 md:p-8 bg-gradient-to-r from-purple-900 via-pink-800 to-purple-900 shadow-lg py-10 sm:py-16 md:py-20 mt-16">
+    <div
+      className="container mx-auto p-4 sm:p-6 md:p-8 shadow-lg py-10 sm:py-16 md:py-20 mt-16"
+      style={{
+        backgroundImage: `url(${bgImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <div
         ref={formRef}
         className="w-full sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/2 m-auto p-10 sm:pb-16 md:pb-20 border-4 border-pink-600 rounded-lg shadow-xl"
+        style={{
+          background: "rgba(255, 255, 255, 0.2)", // Semi-transparent white
+          backdropFilter: "blur(10px)", // Blur effect
+          boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+          border: "1px solid rgba(255, 255, 255, 0.3)",
+        }}
       >
         <h1 className="text-xl sm:text-2xl text-center font-bold text-white mb-4 sm:mb-6">
           Submit Your Data
