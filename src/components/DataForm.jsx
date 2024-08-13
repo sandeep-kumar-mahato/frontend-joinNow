@@ -19,7 +19,7 @@ const DataForm = () => {
     if (currentFormRef) {
       VanillaTilt.init(currentFormRef, {
         max: 25,
-        speed: 400,
+        speed: 900,
         glare: true,
         "max-glare": 0.5,
       });
