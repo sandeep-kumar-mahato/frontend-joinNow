@@ -172,10 +172,10 @@ const DataForm = () => {
           <button
             type="submit"
             disabled={!isButtonActive}
-            className={`w-full p-2 rounded text-white ${
+            className={`w-full p-2 rounded ${
               isButtonActive
                 ? "bg-slate-100 hover:bg-black text-slate-950 hover:text-white"
-                : "bg-slate-950 cursor-not-allowed"
+                : "bg-slate-950 text-white cursor-not-allowed"
             }`}
           >
             Join Now
