@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import VanillaTilt from "vanilla-tilt";
-import bgImage from "../assets/bg.jpg"; // Ensure the path is correct
+import bgImage from "../assets/bg.jpg";
 
 const DataForm = () => {
   const [formData, setFormData] = useState({
@@ -104,10 +104,10 @@ const DataForm = () => {
     >
       <div
         ref={formRef}
-        className="w-full sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/2 m-auto p-10 sm:pb-16 md:pb-20 border-4 border-pink-600 rounded-lg shadow-xl"
+        className="w-full sm:w-3/4 md:w-1/2 lg:w-1/3 xl:w-1/2 m-auto p-10 sm:pb-16 md:pb-20 border-4 border-slate-600 rounded-lg shadow-xl"
         style={{
-          background: "rgba(255, 255, 255, 0.2)", // Semi-transparent white
-          backdropFilter: "blur(10px)", // Blur effect
+          background: "rgba(255, 255, 255, 0.2)",
+          backdropFilter: "blur(10px)",
           boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
           border: "1px solid rgba(255, 255, 255, 0.3)",
         }}
@@ -119,7 +119,7 @@ const DataForm = () => {
           <div className="relative z-0 w-full mb-4 sm:mb-5 group">
             <label
               htmlFor="name"
-              className="block text-base sm:text-lg font-medium text-pink-200"
+              className="block text-base sm:text-lg font-medium text-slate-200"
             >
               Name:
             </label>
@@ -130,14 +130,14 @@ const DataForm = () => {
               value={formData.name}
               onChange={handleChange}
               required
-              className="mt-1 p-2 block w-full border border-pink-400 bg-purple-800 rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500 text-white"
+              className="mt-1 p-2 block w-full border-2 border-slate-400 bg-slate-900 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-100 text-white"
             />
           </div>
 
           <div className="mb-4 sm:mb-5">
             <label
               htmlFor="email"
-              className="block text-base sm:text-lg font-medium text-pink-200"
+              className="block text-base sm:text-lg font-medium text-slate-200"
             >
               Email:
             </label>
@@ -148,7 +148,7 @@ const DataForm = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="mt-1 p-2 block w-full border border-pink-400 bg-purple-800 rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500 text-white"
+              className="mt-1 p-2 block w-full border-2 border-slate-400 bg-slate-900 rounded-md shadow-sm focus:outline-none focus:ring-slate-500 focus:border-slate-100 text-white"
             />
             {emailError && (
               <p className="text-red-500 text-sm mt-1">{emailError}</p>
@@ -156,7 +156,7 @@ const DataForm = () => {
           </div>
 
           <div className="mb-4 sm:mb-5">
-            <label className="block text-base sm:text-lg font-medium text-pink-200">
+            <label className="block text-base sm:text-lg font-medium text-slate-200">
               Phone:
             </label>
             <input
@@ -164,7 +164,7 @@ const DataForm = () => {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full p-2 border border-pink-400 bg-purple-800 rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500 text-white"
+              className="w-full p-2 border-2 border-slate-400 bg-slate-900 rounded-md shadow-sm focus:outline-none focus:ring-slate-900 focus:border-slate-100 text-white"
               required
             />
           </div>
@@ -174,8 +174,8 @@ const DataForm = () => {
             disabled={!isButtonActive}
             className={`w-full p-2 rounded text-white ${
               isButtonActive
-                ? "bg-pink-600 hover:bg-pink-500"
-                : "bg-gray-500 cursor-not-allowed"
+                ? "bg-slate-100 hover:bg-black text-slate-950 hover:text-white"
+                : "bg-slate-950 cursor-not-allowed"
             }`}
           >
             Join Now
